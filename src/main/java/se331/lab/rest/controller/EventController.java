@@ -26,7 +26,7 @@ public class EventController {
             , @RequestParam(value = "_page", required = false) Integer page) {
         Page<Event> pageOutput = eventService.getEvents(perPage,page);
         HttpHeaders responseHeader = new HttpHeaders();
-        responseHeader.set("x-total-count", String.valueOf(pageOutput.getTotalPages()));
+        responseHeader.set("x-total-count", String.valueOf(pageOutput.getTotalElements()));
         return new ResponseEntity<>(pageOutput.getContent(),responseHeader,HttpStatus.OK);
     }
 
